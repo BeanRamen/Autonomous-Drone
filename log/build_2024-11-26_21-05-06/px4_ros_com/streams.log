@@ -1,0 +1,41 @@
+[0.046s] Invoking command in '/home/pavel/ws_ros2/build/px4_ros_com': CMAKE_PREFIX_PATH=/home/pavel/ws_ros2/install/px4_msgs:/home/pavel/ws_ros2/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pavel/ws_ros2/install/px4_msgs/lib:/home/pavel/ws_ros2/install/px4_ros_com/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/pavel/ws_ros2/build/px4_ros_com -- -j12 -l12
+[0.353s] [ 16%] Built target frame_transforms
+[0.357s] [ 33%] Built target vehicle_gps_position_listener
+[0.359s] [ 50%] Built target sensor_combined_listener
+[0.369s] [ 66%] Built target offboard_control
+[0.374s] [ 83%] Built target debug_vect_advertiser
+[0.383s] [100%] Built target offboard_control_srv
+[0.388s] [100%] Built target ament_cmake_python_copy_px4_ros_com
+[1.621s] Traceback (most recent call last):
+[1.622s]   File "/home/pavel/ws_ros2/build/px4_ros_com/ament_cmake_python/px4_ros_com/setup.py", line 4, in <module>
+[1.623s]     setup(
+[1.624s]   File "/home/pavel/.local/lib/python3.10/site-packages/setuptools/__init__.py", line 117, in setup
+[1.625s]     return distutils.core.setup(**attrs)
+[1.626s]   File "/home/pavel/.local/lib/python3.10/site-packages/setuptools/_distutils/core.py", line 170, in setup
+[1.627s]     ok = dist.parse_command_line()
+[1.628s]   File "/home/pavel/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py", line 472, in parse_command_line
+[1.628s]     args = self._parse_command_opts(parser, args)
+[1.629s]   File "/home/pavel/.local/lib/python3.10/site-packages/setuptools/dist.py", line 893, in _parse_command_opts
+[1.630s]     nargs = _Distribution._parse_command_opts(self, parser, args)
+[1.630s]   File "/home/pavel/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py", line 531, in _parse_command_opts
+[1.631s]     cmd_class = self.get_command_class(command)
+[1.632s]   File "/home/pavel/.local/lib/python3.10/site-packages/setuptools/dist.py", line 734, in get_command_class
+[1.633s]     eps = metadata.entry_points(group='distutils.commands', name=command)
+[1.633s]   File "/usr/lib/python3.10/importlib/metadata/__init__.py", line 1021, in entry_points
+[1.633s]     return SelectableGroups.load(eps).select(**params)
+[1.634s]   File "/usr/lib/python3.10/importlib/metadata/__init__.py", line 459, in load
+[1.634s]     ordered = sorted(eps, key=by_group)
+[1.635s]   File "/usr/lib/python3.10/importlib/metadata/__init__.py", line 1018, in <genexpr>
+[1.636s]     eps = itertools.chain.from_iterable(
+[1.636s]   File "/usr/lib/python3.10/importlib/metadata/_itertools.py", line 15, in unique_everseen
+[1.637s]     for element in iterable:
+[1.637s]   File "/usr/lib/python3.10/importlib/metadata/__init__.py", line 565, in <genexpr>
+[1.638s]     resolver(context) for resolver in cls._discover_resolvers()
+[1.638s]   File "<frozen importlib._bootstrap_external>", line 1482, in find_distributions
+[1.639s]   File "/usr/lib/python3.10/importlib/metadata/__init__.py", line 886, in find_distributions
+[1.640s]     @classmethod
+[1.641s] KeyboardInterrupt
+[1.733s] gmake[2]: *** [CMakeFiles/ament_cmake_python_build_px4_ros_com_egg.dir/build.make:70: CMakeFiles/ament_cmake_python_build_px4_ros_com_egg] Interrupt
+[1.734s] gmake[1]: *** [CMakeFiles/Makefile2:332: CMakeFiles/ament_cmake_python_build_px4_ros_com_egg.dir/all] Interrupt
+[1.735s] gmake: *** [Makefile:146: all] Interrupt
+[1.740s] Invoked command in '/home/pavel/ws_ros2/build/px4_ros_com' returned '-2': CMAKE_PREFIX_PATH=/home/pavel/ws_ros2/install/px4_msgs:/home/pavel/ws_ros2/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pavel/ws_ros2/install/px4_msgs/lib:/home/pavel/ws_ros2/install/px4_ros_com/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/pavel/ws_ros2/build/px4_ros_com -- -j12 -l12

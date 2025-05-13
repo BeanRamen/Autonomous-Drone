@@ -1,0 +1,6 @@
+[31mCMake Error at cmake_install.cmake:213 (file):
+  file INSTALL cannot find
+  "/home/pavel/ws_ros2/src/px4_ros_com/src/examples/offboard_py/offboard_control.py":
+  No such file or directory.
+
+[0m

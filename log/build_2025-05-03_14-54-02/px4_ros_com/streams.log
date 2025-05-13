@@ -1,0 +1,129 @@
+[0.016s] Invoking command in '/home/pavel/ws_ros2/build/px4_ros_com': AMENT_PREFIX_PATH=/home/pavel/ws_ros2/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pavel/ws_ros2/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/pavel/ws_ros2/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/pavel/ws_ros2/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/pavel/ws_ros2/build/px4_ros_com -- -j12 -l12
+[0.071s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.252s] -- Found builtin_interfaces: 1.2.1 (/opt/ros/humble/share/builtin_interfaces/cmake)
+[0.288s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.291s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.303s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.318s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.335s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.349s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[0.352s] -- Found geometry_msgs: 4.8.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.387s] -- Found px4_msgs: 2.0.1 (/home/pavel/ws_ros2/install/px4_msgs/share/px4_msgs/cmake)
+[0.403s] -- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)
+[0.446s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.448s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.593s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.657s] -- Found sensor_msgs: 4.8.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[0.680s] -- Found rclpy: 3.3.16 (/opt/ros/humble/share/rclpy/cmake)
+[0.689s] -- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.797s] -- Added test 'copyright' to check source files copyright and LICENSE
+[0.806s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.807s] -- Configured cppcheck include dirs: /home/pavel/ws_ros2/src/px4_ros_com/include;$<BUILD_INTERFACE:/home/pavel/ws_ros2/src/px4_ros_com/include/px4_ros_com>
+[0.807s] -- Configured cppcheck exclude dirs and/or files: 
+[0.813s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[0.813s] -- Configured cpplint exclude dirs and/or files: 
+[0.815s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.816s] -- Added test 'lint_cmake' to check CMake code style
+[0.818s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.823s] -- Added test 'uncrustify' to check C / C++ code style
+[0.823s] -- Configured uncrustify additional arguments: 
+[0.824s] -- Added test 'xmllint' to check XML markup files
+[0.828s] -- Configuring done
+[0.869s] -- Generating done
+[0.874s] -- Build files have been written to: /home/pavel/ws_ros2/build/px4_ros_com
+[0.914s] [35m[1mConsolidate compiler generated dependencies of target vehicle_gps_position_listener[0m
+[0.915s] [35m[1mConsolidate compiler generated dependencies of target frame_transforms[0m
+[0.917s] [35m[1mConsolidate compiler generated dependencies of target debug_vect_advertiser[0m
+[0.918s] [35m[1mConsolidate compiler generated dependencies of target offboard_control[0m
+[0.922s] [35m[1mConsolidate compiler generated dependencies of target offboard_control_srv[0m
+[0.922s] [35m[1mConsolidate compiler generated dependencies of target sensor_combined_listener[0m
+[0.951s] [  0%] Built target ament_cmake_python_copy_px4_ros_com
+[0.953s] [  8%] [32mBuilding CXX object CMakeFiles/frame_transforms.dir/src/lib/frame_transforms.cpp.o[0m
+[0.957s] [ 33%] [32mBuilding CXX object CMakeFiles/sensor_combined_listener.dir/src/examples/listeners/sensor_combined_listener.cpp.o[0m
+[0.957s] [ 33%] [32mBuilding CXX object CMakeFiles/offboard_control_srv.dir/src/examples/offboard/offboard_control_srv.cpp.o[0m
+[0.958s] [ 33%] [32mBuilding CXX object CMakeFiles/vehicle_gps_position_listener.dir/src/examples/listeners/vehicle_gps_position_listener.cpp.o[0m
+[0.958s] [ 41%] [32mBuilding CXX object CMakeFiles/debug_vect_advertiser.dir/src/examples/advertisers/debug_vect_advertiser.cpp.o[0m
+[0.959s] [ 50%] [32mBuilding CXX object CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o[0m
+[2.087s] running egg_info
+[2.164s] writing px4_ros_com.egg-info/PKG-INFO
+[2.166s] writing dependency_links to px4_ros_com.egg-info/dependency_links.txt
+[2.168s] writing top-level names to px4_ros_com.egg-info/top_level.txt
+[2.378s] reading manifest file 'px4_ros_com.egg-info/SOURCES.txt'
+[2.383s] writing manifest file 'px4_ros_com.egg-info/SOURCES.txt'
+[2.505s] [ 50%] Built target ament_cmake_python_build_px4_ros_com_egg
+[11.769s] [ 58%] [32m[1mLinking CXX executable debug_vect_advertiser[0m
+[12.360s] [ 58%] Built target debug_vect_advertiser
+[13.121s] [ 66%] [32m[1mLinking CXX executable offboard_control[0m
+[13.605s] [ 66%] Built target offboard_control
+[14.506s] [ 75%] [32m[1mLinking CXX executable offboard_control_srv[0m
+[15.043s] [ 75%] Built target offboard_control_srv
+[16.133s] [ 83%] [32m[1mLinking CXX shared library libframe_transforms.so[0m
+[16.611s] [ 83%] Built target frame_transforms
+[17.733s] [ 91%] [32m[1mLinking CXX executable vehicle_gps_position_listener[0m
+[17.929s] [100%] [32m[1mLinking CXX executable sensor_combined_listener[0m
+[18.346s] [100%] Built target vehicle_gps_position_listener
+[18.501s] [100%] Built target sensor_combined_listener
+[18.517s] Invoked command in '/home/pavel/ws_ros2/build/px4_ros_com' returned '0': AMENT_PREFIX_PATH=/home/pavel/ws_ros2/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pavel/ws_ros2/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/pavel/ws_ros2/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/pavel/ws_ros2/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/pavel/ws_ros2/build/px4_ros_com -- -j12 -l12
+[18.566s] Invoking command in '/home/pavel/ws_ros2/build/px4_ros_com': AMENT_PREFIX_PATH=/home/pavel/ws_ros2/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pavel/ws_ros2/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/pavel/ws_ros2/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/pavel/ws_ros2/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/pavel/ws_ros2/build/px4_ros_com
+[18.576s] -- Install configuration: ""
+[18.577s] -- Installing: /home/pavel/ws_ros2/install/px4_ros_com/lib/px4_ros_com/sensor_combined_listener
+[18.581s] -- Set runtime path of "/home/pavel/ws_ros2/install/px4_ros_com/lib/px4_ros_com/sensor_combined_listener" to ""
+[18.582s] -- Installing: /home/pavel/ws_ros2/install/px4_ros_com/lib/px4_ros_com/vehicle_gps_position_listener
+[18.586s] -- Set runtime path of "/home/pavel/ws_ros2/install/px4_ros_com/lib/px4_ros_com/vehicle_gps_position_listener" to ""
+[18.587s] -- Installing: /home/pavel/ws_ros2/install/px4_ros_com/lib/px4_ros_com/debug_vect_advertiser
+[18.589s] -- Set runtime path of "/home/pavel/ws_ros2/install/px4_ros_com/lib/px4_ros_com/debug_vect_advertiser" to ""
+[18.590s] -- Installing: /home/pavel/ws_ros2/install/px4_ros_com/lib/px4_ros_com/offboard_control
+[18.592s] -- Set runtime path of "/home/pavel/ws_ros2/install/px4_ros_com/lib/px4_ros_com/offboard_control" to ""
+[18.593s] -- Installing: /home/pavel/ws_ros2/install/px4_ros_com/lib/px4_ros_com/offboard_control_srv
+[18.596s] -- Set runtime path of "/home/pavel/ws_ros2/install/px4_ros_com/lib/px4_ros_com/offboard_control_srv" to ""
+[18.596s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/environment/library_path.sh
+[18.596s] -- Installing: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/environment/library_path.dsv
+[18.596s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/include/px4_ros_com
+[18.596s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/include/px4_ros_com/frame_transforms.h
+[18.596s] -- Installing: /home/pavel/ws_ros2/install/px4_ros_com/lib/libframe_transforms.so
+[18.602s] -- Set runtime path of "/home/pavel/ws_ros2/install/px4_ros_com/lib/libframe_transforms.so" to ""
+[18.603s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com//launch
+[18.603s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com//launch/offboard_control_launch.yaml
+[18.603s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com//launch/sensor_combined_listener.launch.py
+[18.603s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com//test
+[18.603s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com//test/pipeline_io_test.py
+[18.603s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com//test/__init__.py
+[18.603s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com//test/test_input.py
+[18.603s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com//test/test_output.py
+[18.603s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/environment/pythonpath.sh
+[18.603s] -- Installing: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/environment/pythonpath.dsv
+[18.604s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com-0.1.0-py3.10.egg-info
+[18.604s] -- Installing: /home/pavel/ws_ros2/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com-0.1.0-py3.10.egg-info/dependency_links.txt
+[18.604s] -- Installing: /home/pavel/ws_ros2/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com-0.1.0-py3.10.egg-info/PKG-INFO
+[18.604s] -- Installing: /home/pavel/ws_ros2/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com-0.1.0-py3.10.egg-info/top_level.txt
+[18.604s] -- Installing: /home/pavel/ws_ros2/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com-0.1.0-py3.10.egg-info/SOURCES.txt
+[18.604s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com
+[18.604s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com/__init__.py
+[18.605s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com/module_to_import.py
+[18.646s] Listing '/home/pavel/ws_ros2/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com'...
+[18.654s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/lib/px4_ros_com/offboard_control.py
+[18.654s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/lib/px4_ros_com/my_offboard_controller.py
+[18.655s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/lib/px4_ros_com/detectarea_obstacolelor.py
+[18.655s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/lib/px4_ros_com/ControlWASD.py
+[18.655s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/ament_index/resource_index/package_run_dependencies/px4_ros_com
+[18.655s] -- Installing: /home/pavel/ws_ros2/install/px4_ros_com/share/ament_index/resource_index/parent_prefix_path/px4_ros_com
+[18.655s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/environment/ament_prefix_path.sh
+[18.655s] -- Installing: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/environment/ament_prefix_path.dsv
+[18.656s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/environment/path.sh
+[18.656s] -- Installing: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/environment/path.dsv
+[18.656s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/local_setup.bash
+[18.656s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/local_setup.sh
+[18.656s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/local_setup.zsh
+[18.656s] -- Installing: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/local_setup.dsv
+[18.656s] -- Installing: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/package.dsv
+[18.656s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/ament_index/resource_index/packages/px4_ros_com
+[18.656s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/cmake/export_frame_transformsExport.cmake
+[18.656s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/cmake/export_frame_transformsExport-noconfig.cmake
+[18.657s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_dependencies-extras.cmake
+[18.657s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_targets-extras.cmake
+[18.657s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_include_directories-extras.cmake
+[18.657s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_libraries-extras.cmake
+[18.657s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/cmake/px4_ros_comConfig.cmake
+[18.657s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/cmake/px4_ros_comConfig-version.cmake
+[18.657s] -- Up-to-date: /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/package.xml
+[18.660s] Invoked command in '/home/pavel/ws_ros2/build/px4_ros_com' returned '0': AMENT_PREFIX_PATH=/home/pavel/ws_ros2/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pavel/ws_ros2/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/pavel/ws_ros2/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/pavel/ws_ros2/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/pavel/ws_ros2/build/px4_ros_com

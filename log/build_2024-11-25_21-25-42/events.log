@@ -1,0 +1,105 @@
+[0.000000] (-) TimerEvent: {}
+[0.000264] (px4_msgs) JobQueued: {'identifier': 'px4_msgs', 'dependencies': OrderedDict()}
+[0.000334] (px4_ros_com) JobQueued: {'identifier': 'px4_ros_com', 'dependencies': OrderedDict([('px4_msgs', '/home/pavel/ws_ros2/install/px4_msgs')])}
+[0.001461] (px4_msgs) JobStarted: {'identifier': 'px4_msgs'}
+[0.014509] (px4_msgs) JobProgress: {'identifier': 'px4_msgs', 'progress': 'cmake'}
+[0.015743] (px4_msgs) JobProgress: {'identifier': 'px4_msgs', 'progress': 'build'}
+[0.017440] (px4_msgs) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/pavel/ws_ros2/build/px4_msgs', '--', '-j12', '-l12'], 'cwd': '/home/pavel/ws_ros2/build/px4_msgs', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'pavel'), ('LC_TIME', 'ro_RO.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/pavel/ws_ros2/install/px4_ros_com/lib:/home/pavel/ws_ros2/install/px4_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/pavel'), ('OLDPWD', '/home/pavel'), ('DESKTOP_SESSION', 'ubuntu'), ('NVM_BIN', '/home/pavel/.nvm/versions/node/v20.13.1/bin'), ('NVM_INC', '/home/pavel/.nvm/versions/node/v20.13.1/include/node'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'ro_RO.UTF-8'), ('MANAGERPID', '1960'), ('SYSTEMD_EXEC_PID', '2143'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '3997'), ('NVM_DIR', '/home/pavel/.nvm'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/pavel/ws_ros2/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'pavel'), ('JOURNAL_STREAM', '8:19697'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'pavel'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/pavel/.nvm/versions/node/v20.13.1/bin:/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/home/pavel/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/UbuntuLapBean:@/tmp/.ICE-unix/2114,unix/UbuntuLapBean:/tmp/.ICE-unix/2114'), ('INVOCATION_ID', '6a89a6fce595418196360ffac7cc5f6c'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'ro_RO.UTF-8'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('IBUS_DISABLE_SNOOPER', '1'), ('LC_TELEPHONE', 'ro_RO.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.39APX2'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/pavel/ws_ros2/install/px4_ros_com:/home/pavel/ws_ros2/install/px4_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ro_RO.UTF-8'), ('TERMINATOR_UUID', 'urn:uuid:3d8144b9-c902-49f7-8d80-6f19d1d41d94'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ro_RO.UTF-8'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'ro_RO.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/pavel/ws_ros2/build/px4_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('NVM_CD_FLAGS', ''), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/pavel/ws_ros2/install/px4_ros_com/local/lib/python3.10/dist-packages:/home/pavel/ws_ros2/install/px4_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ro_RO.UTF-8'), ('LC_PAPER', 'ro_RO.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/pavel/ws_ros2/install/px4_ros_com:/home/pavel/ws_ros2/install/px4_msgs:/opt/ros/humble')]), 'shell': False}
+[0.099505] (-) TimerEvent: {}
+[0.200551] (-) TimerEvent: {}
+[0.301554] (-) TimerEvent: {}
+[0.402601] (-) TimerEvent: {}
+[0.505786] (-) TimerEvent: {}
+[0.606541] (-) TimerEvent: {}
+[0.708340] (-) TimerEvent: {}
+[0.809106] (-) TimerEvent: {}
+[0.909439] (-) TimerEvent: {}
+[1.010057] (-) TimerEvent: {}
+[1.110627] (-) TimerEvent: {}
+[1.210977] (-) TimerEvent: {}
+[1.311502] (-) TimerEvent: {}
+[1.411844] (-) TimerEvent: {}
+[1.512413] (-) TimerEvent: {}
+[1.612874] (-) TimerEvent: {}
+[1.713392] (-) TimerEvent: {}
+[1.813997] (-) TimerEvent: {}
+[1.915253] (-) TimerEvent: {}
+[2.016923] (-) TimerEvent: {}
+[2.117733] (-) TimerEvent: {}
+[2.218143] (-) TimerEvent: {}
+[2.318704] (-) TimerEvent: {}
+[2.419278] (-) TimerEvent: {}
+[2.519563] (-) TimerEvent: {}
+[2.620028] (-) TimerEvent: {}
+[2.720668] (-) TimerEvent: {}
+[2.821558] (-) TimerEvent: {}
+[2.922389] (-) TimerEvent: {}
+[3.023010] (-) TimerEvent: {}
+[3.123354] (-) TimerEvent: {}
+[3.224206] (-) TimerEvent: {}
+[3.324630] (-) TimerEvent: {}
+[3.414239] (px4_msgs) StdoutLine: {'line': b'[  0%] Built target px4_msgs__cpp\n'}
+[3.424772] (-) TimerEvent: {}
+[3.525807] (px4_msgs) StdoutLine: {'line': b'[ 12%] Built target px4_msgs__rosidl_generator_c\n'}
+[3.528366] (-) TimerEvent: {}
+[3.575070] (px4_msgs) StdoutLine: {'line': b'[ 12%] Built target ament_cmake_python_copy_px4_msgs\n'}
+[3.628675] (-) TimerEvent: {}
+[3.729628] (-) TimerEvent: {}
+[3.753098] (px4_msgs) StdoutLine: {'line': b'[ 24%] Built target px4_msgs__rosidl_typesupport_cpp\n'}
+[3.796241] (px4_msgs) StdoutLine: {'line': b'[ 37%] Built target px4_msgs__rosidl_typesupport_c\n'}
+[3.829732] (-) TimerEvent: {}
+[3.841858] (px4_msgs) StdoutLine: {'line': b'[ 50%] Built target px4_msgs__rosidl_typesupport_introspection_c\n'}
+[3.863587] (px4_msgs) StdoutLine: {'line': b'[ 63%] Built target px4_msgs__rosidl_typesupport_introspection_cpp\n'}
+[3.899234] (px4_msgs) StdoutLine: {'line': b'[ 75%] Built target px4_msgs__rosidl_typesupport_fastrtps_cpp\n'}
+[3.929900] (-) TimerEvent: {}
+[4.030944] (-) TimerEvent: {}
+[4.038083] (px4_msgs) StdoutLine: {'line': b'[ 88%] Built target px4_msgs__rosidl_typesupport_fastrtps_c\n'}
+[4.111161] (px4_msgs) StdoutLine: {'line': b'[ 88%] Built target px4_msgs\n'}
+[4.131877] (-) TimerEvent: {}
+[4.209978] (px4_msgs) StdoutLine: {'line': b'[ 88%] Built target px4_msgs__py\n'}
+[4.232030] (-) TimerEvent: {}
+[4.332934] (-) TimerEvent: {}
+[4.432736] (px4_msgs) StdoutLine: {'line': b'running egg_info\n'}
+[4.433013] (-) TimerEvent: {}
+[4.473434] (px4_msgs) StdoutLine: {'line': b'writing px4_msgs.egg-info/PKG-INFO\n'}
+[4.474218] (px4_msgs) StdoutLine: {'line': b'writing dependency_links to px4_msgs.egg-info/dependency_links.txt\n'}
+[4.474939] (px4_msgs) StdoutLine: {'line': b'writing top-level names to px4_msgs.egg-info/top_level.txt\n'}
+[4.477650] (px4_msgs) StdoutLine: {'line': b'[100%] Built target px4_msgs__rosidl_generator_py\n'}
+[4.533172] (-) TimerEvent: {}
+[4.540905] (px4_msgs) StdoutLine: {'line': b'[100%] Built target px4_msgs__rosidl_typesupport_fastrtps_c__pyext\n'}
+[4.545414] (px4_msgs) StdoutLine: {'line': b'[100%] Built target px4_msgs__rosidl_typesupport_c__pyext\n'}
+[4.548931] (px4_msgs) StdoutLine: {'line': b'[100%] Built target px4_msgs__rosidl_typesupport_introspection_c__pyext\n'}
+[4.623264] (px4_msgs) StdoutLine: {'line': b"reading manifest file 'px4_msgs.egg-info/SOURCES.txt'\n"}
+[4.633323] (-) TimerEvent: {}
+[4.635552] (px4_msgs) StdoutLine: {'line': b"writing manifest file 'px4_msgs.egg-info/SOURCES.txt'\n"}
+[4.712372] (px4_msgs) StdoutLine: {'line': b'[100%] Built target ament_cmake_python_build_px4_msgs_egg\n'}
+[4.733522] (-) TimerEvent: {}
+[4.739974] (px4_msgs) CommandEnded: {'returncode': 0}
+[4.833706] (-) TimerEvent: {}
+[4.934155] (-) TimerEvent: {}
+[5.034557] (-) TimerEvent: {}
+[5.134900] (-) TimerEvent: {}
+[5.235279] (-) TimerEvent: {}
+[5.335736] (-) TimerEvent: {}
+[5.436158] (-) TimerEvent: {}
+[5.536749] (-) TimerEvent: {}
+[5.637510] (-) TimerEvent: {}
+[5.738174] (-) TimerEvent: {}
+[5.838765] (-) TimerEvent: {}
+[5.939890] (-) TimerEvent: {}
+[6.040179] (-) TimerEvent: {}
+[6.140521] (-) TimerEvent: {}
+[6.241975] (-) TimerEvent: {}
+[6.342540] (-) TimerEvent: {}
+[6.443040] (-) TimerEvent: {}
+[6.544032] (-) TimerEvent: {}
+[6.644511] (-) TimerEvent: {}
+[6.744981] (-) TimerEvent: {}
+[6.845358] (-) TimerEvent: {}
+[6.946211] (-) TimerEvent: {}
+[7.046653] (-) TimerEvent: {}
+[7.147043] (-) TimerEvent: {}
+[7.179496] (px4_msgs) StderrLine: {'line': b'Traceback (most recent call last):\n  File "/usr/lib/python3/dist-packages/colcon_parallel_executor/executor/parallel.py", line 75, in execute\n    loop.run_until_complete(future)\n  File "/usr/lib/python3.10/asyncio/base_events.py", line 636, in run_until_complete\n    self.run_forever()\n  File "/usr/lib/python3.10/asyncio/base_events.py", line 603, in run_forever\n    self._run_once()\n  File "/usr/lib/python3.10/asyncio/base_events.py", line 1871, in _run_once\n    event_list = self._selector.select(timeout)\n  File "/usr/lib/python3.10/selectors.py", line 469, in select\n    fd_event_list = self._selector.poll(timeout, max_ev)\nKeyboardInterrupt\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "/usr/lib/python3/dist-packages/colcon_core/executor/__init__.py", line 91, in __call__\n    rc = await self.task(*args, **kwargs)\n  File "/usr/lib/python3/dist-packages/colcon_core/task/__init__.py", line 93, in __call__\n    return await task_method(*args, **kwargs)\n  File "/usr/lib/python3/dist-packages/colcon_ros/task/ament_cmake/build.py", line 59, in build\n    rc = await extension.build(\n  File "/usr/lib/python3/dist-packages/colcon_cmake/task/cmake/build.py", line 110, in build\n    if await has_target(args.build_base, \'install\'):\n  File "/usr/lib/python3/dist-packages/colcon_cmake/task/cmake/__init__.py", line 57, in has_target\n    return target in await get_makefile_targets(path)\n  File "/usr/lib/python3/dist-packages/colcon_cmake/task/cmake/__init__.py", line 77, in get_makefile_targets\n    output = await check_output([\n  File "/usr/lib/python3/dist-packages/colcon_core/subprocess.py", line 129, in check_output\n    assert not rc, f\'Expected {args} to pass: {stderr_data}\'\nAssertionError: Expected [\'/usr/bin/cmake\', \'--build\', \'/home/pavel/ws_ros2/build/px4_msgs\', \'--target\', \'help\'] to pass: \n'}
+[7.179701] (px4_msgs) JobEnded: {'identifier': 'px4_msgs', 'rc': 'SIGINT'}
+[7.190361] (px4_ros_com) JobSkipped: {'identifier': 'px4_ros_com'}
+[7.190459] (-) EventReactorShutdown: {}

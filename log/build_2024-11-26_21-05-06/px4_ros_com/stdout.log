@@ -1,0 +1,7 @@
+[ 16%] Built target frame_transforms
+[ 33%] Built target vehicle_gps_position_listener
+[ 50%] Built target sensor_combined_listener
+[ 66%] Built target offboard_control
+[ 83%] Built target debug_vect_advertiser
+[100%] Built target offboard_control_srv
+[100%] Built target ament_cmake_python_copy_px4_ros_com
