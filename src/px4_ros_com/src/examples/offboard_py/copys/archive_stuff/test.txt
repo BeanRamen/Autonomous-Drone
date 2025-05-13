@@ -1,0 +1,180 @@
+#!/usr/bin/env python3
+
+import rclpy
+from rclpy.node import Node
+from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy, DurabilityPolicy
+from px4_msgs.msg import OffboardControlMode, TrajectorySetpoint, VehicleCommand, VehicleLocalPosition, VehicleStatus
+from sensor_msgs.msg import LaserScan
+
+class OffboardControl(Node):
+    def __init__(self) -> None:
+        super().__init__('offboard_control_takeoff_and_land')
+
+        # QoS profile for all publishers/subscribers
+        qos_profile = QoSProfile(
+            reliability=ReliabilityPolicy.BEST_EFFORT,
+            durability=DurabilityPolicy.VOLATILE,
+            history=HistoryPolicy.KEEP_LAST,
+            depth=1
+        )
+
+        # Publishers
+        self.offboard_control_mode_publisher = self.create_publisher(
+            OffboardControlMode, '/fmu/in/offboard_control_mode', qos_profile)
+        self.trajectory_setpoint_publisher = self.create_publisher(
+            TrajectorySetpoint, '/fmu/in/trajectory_setpoint', qos_profile)
+        self.vehicle_command_publisher = self.create_publisher(
+            VehicleCommand, '/fmu/in/vehicle_command', qos_profile)
+
+        # Subscribers
+        self.create_subscription(
+            VehicleLocalPosition, '/fmu/out/vehicle_local_position', self.vehicle_local_position_callback, qos_profile)
+        self.create_subscription(
+            VehicleStatus, '/fmu/out/vehicle_status', self.vehicle_status_callback, qos_profile)
+        self.create_subscription(
+            LaserScan, '/gazebo_ros_head_rplidar_controller/out', self.lidar_callback, qos_profile)
+
+
+        # Variabile inițializate
+        self.obstacle_detected = False
+        self.obstacle_distance_threshold = 1.0 
+        self.vehicle_position = VehicleLocalPosition()
+        self.vehicle_status = VehicleStatus()
+        self.current_waypoint_index = 0
+        self.waypoints = [[0.0, 0.0, -2.0], [5.0, 0.0, -2.0], [5.0, 3.0, -2.0], [0.0, 3.0, -2.0], [0.0, 0.0, -2.0]]
+        self.waypoint_tolerance = 0.5  # Toleranța pentru a considera că drona a ajuns la un waypoint
+
+        # Timer pentru callback
+        self.create_timer(0.1, self.timer_callback)
+        self.offboard_setpoint_counter = 0
+
+    def lidar_callback(self, msg):
+        """Callback pentru datele de la LiDAR"""
+        # Verifică dacă există distanțe sub pragul de obstacol
+        #self.get_logger().info("OOOOOOOOO detectat")
+        min_distance = min(r for r in msg.ranges if r > 0.2)
+        self.obstacle_detected = min_distance < self.obstacle_distance_threshold
+
+        if self.obstacle_detected:
+            self.get_logger().info("OBSTACOL detectat")
+            self.avoid_obstacle(min_distance)
+
+
+    def avoid_obstacle(self,min_distance):
+        """Funcție pentru evitarea obstacolului"""
+        x, y, z = self.waypoints[self.current_waypoint_index]
+        avoidance_distance = max(0.5, min_distance / 2)  # Setăm o distanță de evitare
+
+        # Definim noi setări pentru a evita obstacolul treptat
+        new_x, new_y = x - avoidance_distance, y - 1.0
+        self.publish_position_setpoint(float(new_x), float(new_y), float(z))
+
+    def vehicle_local_position_callback(self, position):
+        """Callback pentru poziția locală a dronei."""
+        self.vehicle_position = position
+        #self.get_logger().info(f"Current pos: {self.vehicle_position.x:.2f}, {self.vehicle_position.y:.2f}, {self.vehicle_position.z:.2f}")
+
+
+    def vehicle_status_callback(self, status):
+        """Callback pentru starea dronei."""
+        self.vehicle_status = status
+
+    def arm(self):
+        """Armare drona"""
+        self.publish_vehicle_command(VehicleCommand.VEHICLE_CMD_COMPONENT_ARM_DISARM, param1=1.0)
+        #self.get_logger().info('Arm command sent')
+
+    def disarm(self):
+        """Dezarmare drona"""
+        self.publish_vehicle_command(VehicleCommand.VEHICLE_CMD_COMPONENT_ARM_DISARM, param1=0.0)
+        #self.get_logger().info('Disarm command sent')
+
+    def engage_offboard_mode(self):
+        """Activare mod offboard"""
+        self.publish_vehicle_command(VehicleCommand.VEHICLE_CMD_DO_SET_MODE, param1=1.0, param2=6.0)
+        #self.get_logger().info("Switching to offboard mode")
+
+    def land(self):
+        """Activare mod de aterizare"""
+        self.publish_vehicle_command(VehicleCommand.VEHICLE_CMD_NAV_LAND)
+        #self.get_logger().info("Landing initiated")
+
+    def publish_offboard_control_heartbeat(self):
+        """Trimite semnalul pentru a menține modul offboard activ"""
+        msg = OffboardControlMode()
+        msg.position = True
+        msg.timestamp = int(self.get_clock().now().nanoseconds / 1000)
+        self.offboard_control_mode_publisher.publish(msg)
+
+    # def publish_position_setpoint(self, x: float, y: float, z: float):
+    #     """Trimite un setpoint de poziție (x, y, z)"""
+    #     msg = TrajectorySetpoint()
+    #     msg.position = [x, y, z]
+    #     msg.timestamp = int(self.get_clock().now().nanoseconds / 1000)
+    #     self.trajectory_setpoint_publisher.publish(msg)
+    #     self.get_logger().info(f"Moving to waypoint: {[x, y, z]}")
+
+    def publish_position_setpoint(self, x: float, y: float, z: float):
+        """Trimite un setpoint de poziție (x, y, z) și setează o viteză mai mică"""
+        msg = TrajectorySetpoint()
+        msg = TrajectorySetpoint()
+        msg.position = [float(x), float(y), float(z)]
+        msg.velocity = [0.02, 0.02, 0.01]  # Reducem viteza și mai mult
+        msg.timestamp = int(self.get_clock().now().nanoseconds / 1000)
+        self.trajectory_setpoint_publisher.publish(msg)
+        #self.get_logger().info(f"Moving slowly to: {[x, y, z]}")
+
+    def publish_vehicle_command(self, command, **params):
+        """Trimite o comandă către dronă"""
+        msg = VehicleCommand()
+        msg.command = command
+        msg.param1 = params.get("param1", 0.0)
+        msg.param2 = params.get("param2", 0.0)
+        msg.target_system = 1
+        msg.target_component = 1
+        msg.from_external = True
+        msg.timestamp = int(self.get_clock().now().nanoseconds / 1000)
+        self.vehicle_command_publisher.publish(msg)
+
+    def distance_to_waypoint(self, current_pos, waypoint):
+        """Calculează distanța până la un waypoint"""
+        return ((current_pos.x - waypoint[0]) ** 2 + (current_pos.y - waypoint[1]) ** 2 + (current_pos.z - waypoint[2]) ** 2) ** 0.5
+
+    def timer_callback(self):
+        """Callback pentru timer"""
+        self.publish_offboard_control_heartbeat()
+
+        # Armare și activare offboard după câteva cicluri
+        if self.offboard_setpoint_counter == 10:
+            self.engage_offboard_mode()
+            self.arm()
+
+        # Verificăm distanța față de waypoint-ul curent
+        if self.distance_to_waypoint(self.vehicle_position, self.waypoints[self.current_waypoint_index]) > self.waypoint_tolerance:
+            # Mutăm drona spre waypoint
+            x, y, z = self.waypoints[self.current_waypoint_index]
+            self.publish_position_setpoint(x, y, z)
+        else:
+            # Trecem la următorul waypoint
+            self.current_waypoint_index += 1
+
+            # Dacă am ajuns la ultimul waypoint, aterizăm
+            if self.current_waypoint_index >= len(self.waypoints):
+                self.land()
+
+        if self.offboard_setpoint_counter < 11:
+            self.offboard_setpoint_counter += 1
+
+
+    
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = OffboardControl()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+
