@@ -115,7 +115,6 @@ class OffboardControl(Node):
         self.publish_position_setpoint(new_x, new_y, new_z)
 
     def vehicle_local_position_callback(self, position):
-        """Callback pentru poziția locală a dronei."""
         self.vehicle_position = position
         wx, wy, wz = self.waypoints[self.current_waypoint_index]
         x, y, z = self.vehicle_position.x, self.vehicle_position.y, self.vehicle_position.z
@@ -124,34 +123,24 @@ class OffboardControl(Node):
 
 
     def vehicle_status_callback(self, status):
-        """Callback pentru starea dronei."""
         self.vehicle_status = status
 
     def arm(self):
-        """Armare drona"""
         self.publish_vehicle_command(VehicleCommand.VEHICLE_CMD_COMPONENT_ARM_DISARM, param1=1.0)
-        #self.get_logger().info('Arm command sent')
 
     def disarm(self):
-        """Dezarmare drona"""
         self.publish_vehicle_command(VehicleCommand.VEHICLE_CMD_COMPONENT_ARM_DISARM, param1=0.0)
-        #self.get_logger().info('Disarm command sent')
 
     def engage_offboard_mode(self):
-        """Activare mod offboard"""
         self.publish_vehicle_command(VehicleCommand.VEHICLE_CMD_DO_SET_MODE, param1=1.0, param2=6.0)
-        #self.get_logger().info("Switching to offboard mode")
 
     def return_to_home(self):
         self.publish_vehicle_command(VehicleCommand.VEHICLE_CMD_NAV_RETURN_TO_LAUNCH)
 
     def land(self):
-        """Activare mod de aterizare"""
         self.publish_vehicle_command(VehicleCommand.VEHICLE_CMD_NAV_LAND)
-        #self.get_logger().info("Landing initiated")
 
     def publish_offboard_control_heartbeat(self):
-        """Trimite semnalul pentru a menține modul offboard activ"""
         msg = OffboardControlMode()
         msg.position = False
         msg.velocity = True
@@ -183,7 +172,6 @@ class OffboardControl(Node):
         self.trajectory_setpoint_publisher.publish(msg)
 
     def publish_vehicle_command(self, command, **params):
-        """Trimite o comandă către dronă"""
         msg = VehicleCommand()
         msg.command = command
         msg.param1 = params.get("param1", 0.0)
