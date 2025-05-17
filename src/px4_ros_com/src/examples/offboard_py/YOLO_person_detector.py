@@ -12,7 +12,7 @@ class PersonDetector(Node):
 
         self.publisher_ = self.create_publisher(String, 'person_position', 10)
 
-        self.model = YOLO('yolov8n.pt')  # asigură-te că e descărcat sau se va descărca automa
+        self.model = YOLO('yolov8n.pt')  # check
         self.cap = cv2.VideoCapture(0)
 
         self.timer = self.create_timer(0.1, self.detect_person)
@@ -20,7 +20,7 @@ class PersonDetector(Node):
     def detect_person(self):
         ret, frame = self.cap.read()
         if not ret:
-            self.get_logger().error('Camera nu funcționează.')
+            self.get_logger().error('No camera feed')
             return
 
         results = self.model(frame)[0]
@@ -52,10 +52,8 @@ class PersonDetector(Node):
             break
 
         cv2.line(frame, (frame_center, 0), (frame_center, frame.shape[0]), (255, 0, 0), 2)
-
         cv2.imshow('YOLOv8 Person Detection', frame)
         cv2.waitKey(1)
-
         msg = String()
         msg.data = f"person:{direction}" if person_found else "noperson"
         self.publisher_.publish(msg)
