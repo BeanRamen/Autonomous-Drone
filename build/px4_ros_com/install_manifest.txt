@@ -21,9 +21,10 @@
 /home/pavel/ws_ros2/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com-0.1.0-py3.10.egg-info/SOURCES.txt
 /home/pavel/ws_ros2/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com/__init__.py
 /home/pavel/ws_ros2/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com/module_to_import.py
-/home/pavel/ws_ros2/install/px4_ros_com/lib/px4_ros_com/ControlWASD.py
 /home/pavel/ws_ros2/install/px4_ros_com/lib/px4_ros_com/LidarDetection_Avoidance.py
 /home/pavel/ws_ros2/install/px4_ros_com/lib/px4_ros_com/YOLO_person_detector.py
+/home/pavel/ws_ros2/install/px4_ros_com/lib/px4_ros_com/Cartography.py
+/home/pavel/ws_ros2/install/px4_ros_com/lib/px4_ros_com/Main.py
 /home/pavel/ws_ros2/install/px4_ros_com/share/ament_index/resource_index/package_run_dependencies/px4_ros_com
 /home/pavel/ws_ros2/install/px4_ros_com/share/ament_index/resource_index/parent_prefix_path/px4_ros_com
 /home/pavel/ws_ros2/install/px4_ros_com/share/px4_ros_com/environment/ament_prefix_path.sh

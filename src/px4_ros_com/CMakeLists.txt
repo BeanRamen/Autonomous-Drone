@@ -120,9 +120,11 @@ ament_python_install_package(${PROJECT_NAME})
 
 # Install Python executables
 install(PROGRAMS
-  src/examples/offboard_py/ControlWASD.py
+  #src/examples/offboard_py/ControlWASD.py
   src/examples/offboard_py/LidarDetection_Avoidance.py
   src/examples/offboard_py/YOLO_person_detector.py
+  src/examples/offboard_py/Cartography.py
+  src/examples/offboard_py/Main.py
   DESTINATION lib/${PROJECT_NAME}
 
 )

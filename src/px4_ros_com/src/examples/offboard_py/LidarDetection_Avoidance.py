@@ -57,15 +57,15 @@ class OffboardControl(Node):
             self.person_seen = True
             direction = data.split(":")[1]
             if direction == "left":
-                self.get_logger().info("Persoana detectata pe STANGA!")
+                #().info("Persoana detectata pe STANGA!")
                 self.yaw -= 0.2
                 self.publish_position_setpoint(self.vehicle_position.x, self.vehicle_position.y, self.vehicle_position.z)
             elif direction == "right":
-                self.get_logger().info("Persoana detectata pe DREAPTA!")
+                #self.get_logger().info("Persoana detectata pe DREAPTA!")
                 self.yaw += 0.2
                 self.publish_position_setpoint(self.vehicle_position.x, self.vehicle_position.y, self.vehicle_position.z)
             elif direction == "center":
-                self.get_logger().info("Persoana detectata in CENTRU!")
+                #self.get_logger().info("Persoana detectata in CENTRU!")
                 self.publish_position_setpoint(self.vehicle_position.x, self.vehicle_position.y, self.vehicle_position.z)
         else : self.person_seen = False
     
@@ -119,18 +119,18 @@ class OffboardControl(Node):
             new_x = x 
             new_y = y - side_step * math.cos(self.yaw)
             new_z = wz
-            self.get_logger().info(f"Ocolesc pe STANGA {min_right:.2f}")
+            #self.get_logger().info(f"Ocolesc pe STANGA {min_right:.2f}")
         elif min_right > min_left and min_right > self.obstacle_distance_threshold:
             new_x = x 
             new_y = y + side_step * math.cos(self.yaw)
             #new_y = y +1*(math.copysign(1,self.yaw))*side_step
             new_z = wz
-            self.get_logger().info(f"Ocolesc pe DREAPTA {min_left:.2f}")
+            #self.get_logger().info(f"Ocolesc pe DREAPTA {min_left:.2f}")
         else:
             new_x = x
             new_y = y
             new_z = wz - 10
-            self.get_logger().warn(f"NU EXISTĂ CALE LIBERĂ! Aștept...[{min_left:.2f} / {min_right:.2f}]")
+            #self.get_logger().warn(f"NU EXISTĂ CALE LIBERĂ! Aștept...[{min_left:.2f} / {min_right:.2f}]")
 
         self.yaw = math.atan2(wy - new_y, wx - new_x)
         self.publish_position_setpoint(new_x, new_y, new_z)
@@ -139,8 +139,12 @@ class OffboardControl(Node):
         self.vehicle_position = position
         wx, wy, wz = self.waypoints[self.current_waypoint_index]
         x, y, z = self.vehicle_position.x, self.vehicle_position.y, self.vehicle_position.z
-        self.get_logger().info(f"POS X [{x:.2f}m]  Y [{y:.2f}m]  Z [{z:.2f}m]")
-        self.get_logger().info(f"POS WX [{wx:.2f}m]  WY [{wy:.2f}m]  WZ [{wz:.2f}m] YAW [{self.yaw:.2f}]")
+        if self.person_seen == False:
+            self.get_logger().info(f"POS X [{x:.2f}m]  Y [{y:.2f}m]  Z [{z:.2f}m]")
+            self.get_logger().info(f"POS WX [{wx:.2f}m]  WY [{wy:.2f}m]  WZ [{wz:.2f}m] YAW [{self.yaw:.2f}]")
+        else:
+            self.get_logger().info(f"POS X [{x:.2f}m]  Y [{y:.2f}m]  Z [{z:.2f}m] Persoana detectata! Astept...")
+            
 
 
     def vehicle_status_callback(self, status):
@@ -220,7 +224,7 @@ class OffboardControl(Node):
             if abs(x - last_x) <= tolerance and abs(y - last_y) <= tolerance:
                 self.blocked_counter += 1
                 if self.blocked_counter >= self.blocked_threshold:
-                    self.get_logger().warn("Vehicul Blocat: Nu se mișcaa!")
+                    #self.get_logger().warn("Vehicul Blocat: Nu se mișcaa!")
                     self.publish_offboard_control_heartbeat()
                     if self.offboard_setpoint_counter == 10:
                         self.engage_offboard_mode()
