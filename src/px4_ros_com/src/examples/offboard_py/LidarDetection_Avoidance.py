@@ -6,6 +6,7 @@ from rclpy.node import Node
 from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy, DurabilityPolicy
 from px4_msgs.msg import OffboardControlMode, TrajectorySetpoint, VehicleCommand, VehicleLocalPosition, VehicleStatus
 from sensor_msgs.msg import LaserScan
+from std_msgs.msg import String
 
 class OffboardControl(Node):
     def __init__(self) -> None:
@@ -31,7 +32,9 @@ class OffboardControl(Node):
             VehicleStatus, '/fmu/out/vehicle_status', self.vehicle_status_callback, qos_profile)
         self.create_subscription(
             LaserScan, '/gazebo_ros_head_rplidar_controller/out', self.lidar_callback, qos_profile)
-
+        self.create_subscription(String, '/person_position', self.person_callback, qos_profile)
+        
+        self.person_seen = False
         self.last_position = None   
         self.obstacle_detected = False
         self.obstacle_distance_threshold = 10.0 
@@ -48,6 +51,24 @@ class OffboardControl(Node):
         self.create_timer(0.1, self.timer_callback)
         self.offboard_setpoint_counter = 0
 
+    def person_callback(self, msg):
+        data = msg.data
+        if data.startswith("person:"):
+            self.person_seen = True
+            direction = data.split(":")[1]
+            if direction == "left":
+                self.get_logger().info("Persoana detectata pe STANGA!")
+                self.yaw -= 0.2
+                self.publish_position_setpoint(self.vehicle_position.x, self.vehicle_position.y, self.vehicle_position.z)
+            elif direction == "right":
+                self.get_logger().info("Persoana detectata pe DREAPTA!")
+                self.yaw += 0.2
+                self.publish_position_setpoint(self.vehicle_position.x, self.vehicle_position.y, self.vehicle_position.z)
+            elif direction == "center":
+                self.get_logger().info("Persoana detectata in CENTRU!")
+                self.publish_position_setpoint(self.vehicle_position.x, self.vehicle_position.y, self.vehicle_position.z)
+        else : self.person_seen = False
+    
     def lidar_callback(self, msg):
         x, y, z = self.vehicle_position.x, self.vehicle_position.y, self.vehicle_position.z
 
@@ -211,7 +232,7 @@ class OffboardControl(Node):
         self.last_position = (x, y, z)
 
         if self.distance_to_waypoint(self.vehicle_position, self.waypoints[self.current_waypoint_index]) > self.waypoint_tolerance:
-            if self.obstacle_detected == False:
+            if self.obstacle_detected == False and self.person_seen == False:
                 wx, wy, wz = self.waypoints[self.current_waypoint_index]
                 x, y, z = self.vehicle_position.x, self.vehicle_position.y, self.vehicle_position.z
                 self.yaw = math.atan2(wy - y, wx - x)

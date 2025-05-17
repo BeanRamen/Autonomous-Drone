@@ -213,6 +213,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/px4_ros_com" TYPE PROGRAM FILES
     "/home/pavel/ws_ros2/src/px4_ros_com/src/examples/offboard_py/ControlWASD.py"
     "/home/pavel/ws_ros2/src/px4_ros_com/src/examples/offboard_py/LidarDetection_Avoidance.py"
+    "/home/pavel/ws_ros2/src/px4_ros_com/src/examples/offboard_py/YOLO_person_detector.py"
     )
 endif()
 

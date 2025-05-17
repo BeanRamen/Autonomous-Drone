@@ -6,6 +6,7 @@ from rclpy.node import Node
 from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy, DurabilityPolicy
 from px4_msgs.msg import OffboardControlMode, TrajectorySetpoint, VehicleCommand, VehicleLocalPosition, VehicleStatus
 from sensor_msgs.msg import LaserScan
+from std_msgs.msg import String
 
 class OffboardControl(Node):
     def __init__(self) -> None:
@@ -31,7 +32,9 @@ class OffboardControl(Node):
             VehicleStatus, '/fmu/out/vehicle_status', self.vehicle_status_callback, qos_profile)
         self.create_subscription(
             LaserScan, '/gazebo_ros_head_rplidar_controller/out', self.lidar_callback, qos_profile)
-
+        self.create_subscription(String, '/person_position', self.person_callback, qos_profile)
+        
+        self.person_seen = False
         self.last_position = None   
         self.obstacle_detected = False
         self.obstacle_distance_threshold = 10.0 
@@ -48,6 +51,23 @@ class OffboardControl(Node):
         self.create_timer(0.1, self.timer_callback)
         self.offboard_setpoint_counter = 0
 
+    def person_callback(self, msg):
+        data = msg.data
+        if data.startswith("person:"):
+            self.person_seen = True
+            direction = data.split(":")[1]
+            if direction == "left":
+                self.get_logger().info("Persoana detectata pe STANGA!")
+                self.yaw -= 0.2
+                self.publish_position_setpoint(self.vehicle_position.x, self.vehicle_position.y, self.vehicle_position.z)
+            elif direction == "right":
+                self.get_logger().info("Persoana detectata pe DREAPTA!")
+                self.yaw += 0.2
+                self.publish_position_setpoint(self.vehicle_position.x, self.vehicle_position.y, self.vehicle_position.z)
+            elif direction == "center":
+                self.get_logger().info("Persoana detectata in CENTRU!")
+                self.publish_position_setpoint(self.vehicle_position.x, self.vehicle_position.y, self.vehicle_position.z)
+        else : self.person_seen = False
     def lidar_callback(self, msg):
         x, y, z = self.vehicle_position.x, self.vehicle_position.y, self.vehicle_position.z
 
@@ -115,7 +135,6 @@ class OffboardControl(Node):
         self.publish_position_setpoint(new_x, new_y, new_z)
 
     def vehicle_local_position_callback(self, position):
-        """Callback pentru poziția locală a dronei."""
         self.vehicle_position = position
         wx, wy, wz = self.waypoints[self.current_waypoint_index]
         x, y, z = self.vehicle_position.x, self.vehicle_position.y, self.vehicle_position.z
@@ -124,34 +143,24 @@ class OffboardControl(Node):
 
 
     def vehicle_status_callback(self, status):
-        """Callback pentru starea dronei."""
         self.vehicle_status = status
 
     def arm(self):
-        """Armare drona"""
         self.publish_vehicle_command(VehicleCommand.VEHICLE_CMD_COMPONENT_ARM_DISARM, param1=1.0)
-        #self.get_logger().info('Arm command sent')
 
     def disarm(self):
-        """Dezarmare drona"""
         self.publish_vehicle_command(VehicleCommand.VEHICLE_CMD_COMPONENT_ARM_DISARM, param1=0.0)
-        #self.get_logger().info('Disarm command sent')
 
     def engage_offboard_mode(self):
-        """Activare mod offboard"""
         self.publish_vehicle_command(VehicleCommand.VEHICLE_CMD_DO_SET_MODE, param1=1.0, param2=6.0)
-        #self.get_logger().info("Switching to offboard mode")
 
     def return_to_home(self):
         self.publish_vehicle_command(VehicleCommand.VEHICLE_CMD_NAV_RETURN_TO_LAUNCH)
 
     def land(self):
-        """Activare mod de aterizare"""
         self.publish_vehicle_command(VehicleCommand.VEHICLE_CMD_NAV_LAND)
-        #self.get_logger().info("Landing initiated")
 
     def publish_offboard_control_heartbeat(self):
-        """Trimite semnalul pentru a menține modul offboard activ"""
         msg = OffboardControlMode()
         msg.position = False
         msg.velocity = True
@@ -183,7 +192,6 @@ class OffboardControl(Node):
         self.trajectory_setpoint_publisher.publish(msg)
 
     def publish_vehicle_command(self, command, **params):
-        """Trimite o comandă către dronă"""
         msg = VehicleCommand()
         msg.command = command
         msg.param1 = params.get("param1", 0.0)
@@ -223,7 +231,7 @@ class OffboardControl(Node):
         self.last_position = (x, y, z)
 
         if self.distance_to_waypoint(self.vehicle_position, self.waypoints[self.current_waypoint_index]) > self.waypoint_tolerance:
-            if self.obstacle_detected == False:
+            if self.obstacle_detected == False and self.person_seen == False:
                 wx, wy, wz = self.waypoints[self.current_waypoint_index]
                 x, y, z = self.vehicle_position.x, self.vehicle_position.y, self.vehicle_position.z
                 self.yaw = math.atan2(wy - y, wx - x)

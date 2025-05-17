@@ -122,6 +122,7 @@ ament_python_install_package(${PROJECT_NAME})
 install(PROGRAMS
   src/examples/offboard_py/ControlWASD.py
   src/examples/offboard_py/LidarDetection_Avoidance.py
+  src/examples/offboard_py/YOLO_person_detector.py
   DESTINATION lib/${PROJECT_NAME}
 
 )
